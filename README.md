@@ -1,0 +1,1 @@
+# range-maven-plugin-example
