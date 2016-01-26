@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.Cka3o4Huk</groupId>
+	<artifactId>range-maven-plugin-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Sample project for range maven plugin</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.Cka3o4Huk</groupId>
+				<artifactId>range-maven-plugin</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>test-single</id>
+						<goals>
+							<goal>generate-single</goal>
+						</goals>
+						<phase>generate-resources</phase>
+						<configuration>
+							<fields>
+								<field>
+									<name>accountName</name>
+									<type>range(1000000,9999999)</type>
+								</field>
+								<field>
+									<name>emailAddress</name>
+									<type>regex([a-z][a-z0-9]{3,10}\@[a-z]{5,7}\.jp)</type>
+								</field>
+								<field>
+									<name>password</name>
+									<type>regex([1-9a-f][0-9a-f]{31})</type>
+								</field>
+							</fields>
+						</configuration>
+					</execution>
+					<execution>
+						<id>test-multiple</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>generate-resources</phase>
+						<configuration>
+							<inputFilePattern>src/test/range/*.conf</inputFilePattern>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
